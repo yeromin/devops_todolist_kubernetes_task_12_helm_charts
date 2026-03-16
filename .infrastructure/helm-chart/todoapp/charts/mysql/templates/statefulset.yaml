@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "mysql.labels" . | nindent 4 }}
 spec:
-  serviceName: {{ include "mysql.serviceName" . }}
+  serviceName: {{ printf "%s-headless" .Chart.Name }}
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:

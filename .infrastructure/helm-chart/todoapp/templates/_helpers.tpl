@@ -10,14 +10,6 @@
 {{- printf "%s-%s" .Chart.Name .Values.serviceAccount.name -}}
 {{- end -}}
 
-{{- define "todoapp.roleName" -}}
-{{- printf "%s-%s" .Chart.Name (include "todoapp.serviceAccountName" .) -}}
-{{- end -}}
-
-{{- define "todoapp.roleBindingName" -}}
-{{- printf "%s-binding" (include "todoapp.roleName" .) -}}
-{{- end -}}
-
 {{- define "todoapp.secretName" -}}
 {{- printf "%s-secret" .Chart.Name -}}
 {{- end -}}

@@ -6,10 +6,6 @@
 {{- .Chart.Name -}}
 {{- end -}}
 
-{{- define "mysql.serviceName" -}}
-{{- printf "%s-headless" .Chart.Name -}}
-{{- end -}}
-
 {{- define "mysql.secretName" -}}
 {{- printf "%s-secrets" .Chart.Name -}}
 {{- end -}}
