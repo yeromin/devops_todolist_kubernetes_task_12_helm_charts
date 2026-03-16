@@ -81,7 +81,7 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
   path: /(|$)(.*)
-  pathType: Prefix
+  pathType: ImplementationSpecific
 
 probes:
   liveness:
