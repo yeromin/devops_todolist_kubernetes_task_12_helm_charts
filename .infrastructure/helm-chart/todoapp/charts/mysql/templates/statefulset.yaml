@@ -39,7 +39,7 @@ spec:
             - name: mysql
               containerPort: {{ .Values.service.port }}
           volumeMounts:
-            - name: data
+            - name: {{ include "mysql.pvcName" . }}
               mountPath: /var/lib/mysql
               subPath: mysql
             - name: config-map
@@ -64,7 +64,7 @@ spec:
             name: {{ include "mysql.configMapName" . }}
   volumeClaimTemplates:
     - metadata:
-        name: data
+        name: {{ include "mysql.pvcName" . }}
       spec:
         accessModes:
           {{- toYaml .Values.persistence.accessModes | nindent 10 }}

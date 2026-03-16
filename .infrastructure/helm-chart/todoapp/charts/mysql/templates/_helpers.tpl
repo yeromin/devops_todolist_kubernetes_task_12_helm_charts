@@ -14,6 +14,10 @@
 {{- .Chart.Name -}}
 {{- end -}}
 
+{{- define "mysql.pvcName" -}}
+{{- printf "%s-data" .Chart.Name -}}
+{{- end -}}
+
 {{- define "mysql.labels" -}}
 app.kubernetes.io/name: {{ .Chart.Name }}
 app.kubernetes.io/instance: {{ .Release.Name }}
