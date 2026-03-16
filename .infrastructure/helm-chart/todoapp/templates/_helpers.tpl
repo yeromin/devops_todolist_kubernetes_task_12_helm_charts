@@ -1,5 +1,5 @@
 {{- define "todoapp.namespace" -}}
-{{- .Values.namespace.name -}}
+{{- printf "%s-%s" .Chart.Name .Values.namespace.name -}}
 {{- end -}}
 
 {{- define "todoapp.name" -}}
@@ -8,6 +8,14 @@
 
 {{- define "todoapp.serviceAccountName" -}}
 {{- printf "%s-%s" .Chart.Name .Values.serviceAccount.name -}}
+{{- end -}}
+
+{{- define "todoapp.roleName" -}}
+{{- printf "%s-%s" .Chart.Name (include "todoapp.serviceAccountName" .) -}}
+{{- end -}}
+
+{{- define "todoapp.roleBindingName" -}}
+{{- printf "%s-binding" (include "todoapp.roleName" .) -}}
 {{- end -}}
 
 {{- define "todoapp.secretName" -}}

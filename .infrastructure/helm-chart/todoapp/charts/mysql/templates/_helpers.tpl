@@ -1,9 +1,13 @@
 {{- define "mysql.namespace" -}}
-{{- .Values.namespace.name -}}
+{{- printf "%s-%s" .Chart.Name .Values.namespace.name -}}
 {{- end -}}
 
 {{- define "mysql.name" -}}
 {{- .Chart.Name -}}
+{{- end -}}
+
+{{- define "mysql.serviceName" -}}
+{{- printf "%s-headless" .Chart.Name -}}
 {{- end -}}
 
 {{- define "mysql.secretName" -}}

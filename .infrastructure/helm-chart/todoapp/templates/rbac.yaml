@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: {{ include "todoapp.serviceAccountName" . }}
+  name: {{ include "todoapp.roleName" . }}
   namespace: {{ include "todoapp.namespace" . }}
   labels:
     {{- include "todoapp.labels" . | nindent 4 }}
@@ -14,7 +14,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ printf "%s-binding" (include "todoapp.serviceAccountName" .) }}
+  name: {{ include "todoapp.roleBindingName" . }}
   namespace: {{ include "todoapp.namespace" . }}
   labels:
     {{- include "todoapp.labels" . | nindent 4 }}
@@ -25,5 +25,5 @@ subjects:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: {{ include "todoapp.serviceAccountName" . }}
+  name: {{ include "todoapp.roleName" . }}
 {{- end }}

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "mysql.name" . }}
+  name: {{ include "mysql.serviceName" . }}
   namespace: {{ include "mysql.namespace" . }}
   labels:
     {{- include "mysql.labels" . | nindent 4 }}
